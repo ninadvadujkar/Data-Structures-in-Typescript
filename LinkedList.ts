@@ -28,11 +28,40 @@ class LinkedList {
         }
         this.Tail = node;
     }
+    removeFromEnd() {
+        // If list not empty then only proceed ahead to delete
+        if(!this.listEmpty) {
+            let current: Node1 = this.Head;
+            //If there's only one node present hence no need to traverse. Just assing Head and Tail as null
+            if(!current.Next) {
+                this.Head = null;
+                this.Tail = null;
+            } else {
+                // We can confirm that we reached the second last node when it's Next pointer points to Tail.
+                while(current.Next != this.Tail) {
+                    current = current.Next;
+                }
+                // Assign second last node's Next to null and assign it as Tail
+                current.Next = null;
+                this.Tail = current;
+            }
+        }
+    }
+    removeFromStart() {
+        // If list is not empty make head's Next pointer as Head (i.e. the 2nd node becomes the first node now)
+        if(!this.listEmpty) {
+            this.Head = this.Head.Next;
+        }
+    }
     printList() {
         let tempNode = this.Head;
-        while(tempNode != null) {
-            console.log(tempNode.value);
-            tempNode = tempNode.Next;
+        if(this.Head == null) {
+            console.log("List is empty!");
+        } else {
+            while(tempNode != null) {
+                console.log(tempNode.value);
+                tempNode = tempNode.Next;
+            }
         }
     }
 }
@@ -43,4 +72,10 @@ list.addAtStart(node1);
 list.addAtStart(new Node1(20));
 list.addAtStart(new Node1(-5));
 list.addAtEnd(new Node1(50));
+list.printList();
+list.removeFromEnd();
+console.log("----------------------------");
+list.printList();
+list.removeFromStart();
+console.log("----------------------------");
 list.printList();
