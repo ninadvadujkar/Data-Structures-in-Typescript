@@ -5,6 +5,7 @@ This repository contains basic implementations of important Data Structures in T
 ## Prerequisites
 
 -- [Node.js](https://nodejs.org/)
+
 -- [Typescript](https://www.typescriptlang.org/)
 
 ## Steps to Execute
